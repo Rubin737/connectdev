@@ -13,7 +13,8 @@ export const signup = async (req, res) => {
     if (existingUser) {
       return res
         .status(400)
-        .send("Email Already exists,please use another email");
+        .json({ message: "Email Already exists,please use another email",success:false});
+      // return throw new Error("Email Already exists,please use another email");
     }
 
     const randomNumber = Math.floor(Math.random() * 100) + 1;
@@ -55,6 +56,6 @@ export const signup = async (req, res) => {
       data: newUser,
     });
   } catch (err) {
-    res.status(400).send(`Error:${err.message}`);
+    res.status(400).json({ success: false, message: err.message, valErrors:err.valErrors });
   }
 };
