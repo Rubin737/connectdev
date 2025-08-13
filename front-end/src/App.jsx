@@ -8,10 +8,12 @@ import Signup from './pages/Signup'
 import { Navigate } from 'react-router-dom'
 import PageLoader from './components/PageLoader'
 import { useAuthUser } from './hooks/useAuthUser'
-import Chat from './pages/Chat'
-
+import Layout from './components/Layout'
+import { useSelector } from 'react-redux'
 
 const App = () => {
+const theme = useSelector(store=>store.theme);
+console.log(theme)
 
 const {authUser,isLoading,isError,error} =  useAuthUser();
 
@@ -20,14 +22,13 @@ if(isLoading) return <PageLoader/>
 const IsAuthenticatedUser = Boolean(authUser?.data);
 const IsOnboarded = authUser?.data?.isOnboarded
 
-console.log(IsAuthenticatedUser)
 
  return (
-    <div>
+    <div data-theme={theme}>
       <Routes>
          <Route
          path='/'
-         element={IsAuthenticatedUser && IsOnboarded ? <Home/> : (<Navigate to={!IsAuthenticatedUser ? "/signup" : "/onboard"}/>)}
+         element={IsAuthenticatedUser && IsOnboarded ? <Layout isSidebar={true} ><Home/></Layout> : (<Navigate to={!IsAuthenticatedUser ? "/signup" : "/onboard"}/>)}
          ></Route>
 
          <Route
@@ -45,7 +46,18 @@ console.log(IsAuthenticatedUser)
         <Route
         path='/login'
         element={!IsAuthenticatedUser ? <Login/> : <Navigate to={!IsOnboarded ? "/onboard" : "/"}/>}
-        ></Route> 
+        ></Route>
+
+        <Route
+        path='/notifications'
+        element={IsOnboarded ? <Notification/> : <Navigate to={"/"}/>}
+        >
+        </Route> 
+        <Route
+        path='/friends'
+        element={IsOnboarded ? <Notification/> : <Navigate to={"/"}/>}
+        >
+        </Route> 
          
       </Routes>   
     </div>

@@ -6,8 +6,13 @@ export const createUser = async (signupData) => {
 };
 
 export const getAuthUser = async () => {
-  const { data } = await axiosInstance.get("/auth/currentuser");
-  return data;
+  try {
+    const { data } = await axiosInstance.get("/auth/currentuser");
+    return data;
+  } catch (error) {
+    console.log(error.message, "Cant logout");
+    return null;
+  }
 };
 export const updateUser = async (onboardData) => {
   const { data } = await axiosInstance.post("/auth/onboard", onboardData);
@@ -15,5 +20,9 @@ export const updateUser = async (onboardData) => {
 };
 export const loginUser = async (loginData) => {
   const { data } = await axiosInstance.post("/auth/login", loginData);
+  return data;
+};
+export const logoutUser = async () => {
+  const { data } = await axiosInstance.post("/auth/logout");
   return data;
 };

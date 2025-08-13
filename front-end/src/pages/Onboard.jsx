@@ -5,7 +5,7 @@ import toast from 'react-hot-toast'
 import ErrorMessage from 'src/components/ErrorMessage'
 import { LANGUAGES } from 'src/constants/constants'
 import { useAuthUser } from 'src/hooks/useAuthUser'
-import { updateUser } from 'src/lib/db'
+import { updateUser } from 'src/lib/dbAuth'
 
 const Onboard = () => {
 

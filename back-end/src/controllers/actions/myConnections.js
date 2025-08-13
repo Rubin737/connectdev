@@ -4,8 +4,10 @@ import { User } from "../../models/User.js";
 export const myConnections = async (req, res) => {
   const loggedUserId = req.user._id;
 
-  const user = await User.findById(loggedUserId).select("friends").populate("fullName location")
-  console.log(`logginedUser: ${user}`);
+  const user = await User.findById(loggedUserId)
+    .select("friends")
+    .populate("fullName location");
+  // console.log(`logginedUser: ${user}`);
 
   try {
     const connections = await Connection.find({
@@ -29,6 +31,8 @@ export const myConnections = async (req, res) => {
       }
       return connection.sender;
     });
+
+    // console.log("connectionsList:",onlyConnections)
 
     res.status(200).json({
       success: true,

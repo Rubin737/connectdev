@@ -3,7 +3,7 @@ import signupImg from '../assets/images/signup-img.png';
 import { Eye, EyeOff, ShipWheelIcon } from 'lucide-react'; 
 import { Link, useNavigate } from 'react-router-dom';
 import { QueryClient, useMutation, useQueryClient } from '@tanstack/react-query';
-import { createUser } from 'src/lib/db';
+import { createUser } from 'src/lib/dbAuth';
 import ErrorMessage from 'src/components/ErrorMessage';
 
 

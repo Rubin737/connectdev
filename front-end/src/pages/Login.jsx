@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import signinImg from '../assets/images/signin-img.png';
 import { Link } from 'react-router-dom';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { loginUser } from 'src/lib/db';
+import { loginUser } from 'src/lib/dbAuth';
 import ErrorMessage from 'src/components/ErrorMessage';
 
 const Login = () => {
@@ -32,7 +32,7 @@ const Login = () => {
     loginMutation(signinData)
   }
 
-
+  
 
   return (
     <section data-theme="forest" className="h-screen flex justify-center items-center">
@@ -87,8 +87,6 @@ const Login = () => {
           </div>
         </section>
       );
-
-  
 }
 
 export default Login

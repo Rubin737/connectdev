@@ -36,7 +36,7 @@ export const myFeed = async (req, res) => {
          isOnboarded : true
         }
       ],
-    }).select("fullName bio");
+    }).select("fullName bio nativeLanguage learningLanguage location profilePic");
 
 
     res.status(200).json({success:true,message:`${loggedUser.fullName}'s feed`,data:createFeed})
