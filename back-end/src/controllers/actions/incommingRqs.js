@@ -11,7 +11,7 @@ export const inncommingReqs = async(req,res)=>{
           status: "interest",
         }).populate(
           "sender",
-          "fullName nativeLanguage learningLanguage location"
+          "fullName nativeLanguage learningLanguage profilePic"
         );
 
         if (!requests) {
@@ -23,7 +23,8 @@ export const inncommingReqs = async(req,res)=>{
     
         res.status(200).json({
             success:true,
-            message:requests
+            message:"Incomming request",
+            data:requests
         })
 
     }catch(err){

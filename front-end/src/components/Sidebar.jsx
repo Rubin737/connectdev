@@ -9,7 +9,7 @@ const Sidebar = () => {
  const location = useLocation();
  const currentPath = location.pathname
 
- console.log(authUser)
+//  console.log(authUser)
   return (
     <aside className='w-full flex flex-col'>
       <div>

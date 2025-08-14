@@ -51,7 +51,9 @@ export const sendRequest = async (req, res) => {
     });
 
     if (existingConnection) {
-      return res.status(400).send("Conection already exists");
+      return res
+        .status(400)
+        .json({ success: false, message: "Conection already exists" });
     }
 
     const newConnection = await Connection.create({

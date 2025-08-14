@@ -25,6 +25,11 @@
   .flag-span{
     @apply inline-flex items-center bg-primary text-sm px-3  py-0.5 rounded-full font-semibold;
   }
-  
+  .seemore-span{
+    @apply pl-1 underline decoration-white underline-offset-1 text-accent cursor-pointer;
+  }
+  .flag-span-not{
+    @apply inline-flex items-center bg-primary text-[12px] px-2  py-0.5 rounded-full font-semibold;
+  }
 
 }

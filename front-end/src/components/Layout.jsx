@@ -2,7 +2,7 @@ import React from 'react'
 import Sidebar from './Sidebar'
 import Header from './Header'
 
-const Layout = ({isSidebar,children}) => {
+const Layout = ({isSidebar=true,children}) => {
   return (
     <div className='flex bg-base-200'>
       <div className='flex h-screen w-48 bg-base-300  py-5 px-2'>
@@ -12,7 +12,7 @@ const Layout = ({isSidebar,children}) => {
         <div className='bg-base-300'>
         <Header/>
       </div>
-      <div className='flex-1'>
+      <div className='flex-1 '>
         {children}
       </div>
       </div>

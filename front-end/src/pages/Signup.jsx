@@ -30,7 +30,7 @@ const Signup = () => {
   }    
 
   return (
-    <section data-theme="forest" className="h-screen flex justify-center items-center">
+    <section  className="h-screen flex justify-center items-center">
       <div className="w-[800px] flex border rounded-2xl overflow-hidden font-inter">
         <div className="w-1/2 py-8 flex flex-col justify-center px-8">
           <div className="flex items-center gap-x-2 mb-6">

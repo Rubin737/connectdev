@@ -45,9 +45,9 @@ export const reviewRequest = async (req, res) => {
     const saveFriendsOnSender = await User.findByIdAndUpdate(
       findConnection.sender,{$addToSet:{friends:findConnection.receipient}}
     )
-    const saveFriendsOnRecipient = await User.findByIdAndUpdate(
-      findConnection.sender,{$addToSet:{friends:findConnection.sender}}
-    )
+    // const saveFriendsOnRecipient = await User.findByIdAndUpdate(
+    //   findConnection.sender,{$addToSet:{friends:findConnection.sender}}
+    // )
 
 
 

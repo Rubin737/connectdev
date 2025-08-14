@@ -10,10 +10,11 @@ import PageLoader from './components/PageLoader'
 import { useAuthUser } from './hooks/useAuthUser'
 import Layout from './components/Layout'
 import { useSelector } from 'react-redux'
+import ConnectionRequests from './pages/ConnectionRequests'
 
 const App = () => {
 const theme = useSelector(store=>store.theme);
-console.log(theme)
+
 
 const {authUser,isLoading,isError,error} =  useAuthUser();
 
@@ -47,17 +48,17 @@ const IsOnboarded = authUser?.data?.isOnboarded
         path='/login'
         element={!IsAuthenticatedUser ? <Login/> : <Navigate to={!IsOnboarded ? "/onboard" : "/"}/>}
         ></Route>
-
+ 
         <Route
         path='/notifications'
-        element={IsOnboarded ? <Notification/> : <Navigate to={"/"}/>}
+        element={IsAuthenticatedUser && IsOnboarded ? <Layout><Notification/></Layout> : <Navigate to={"/"}/>}
         >
         </Route> 
-        <Route
-        path='/friends'
-        element={IsOnboarded ? <Notification/> : <Navigate to={"/"}/>}
+        {/* <Route
+        path='/requests'
+        element={IsAuthenticatedUser && IsOnboarded ? <ConnectionRequests/> : <Navigate to={"/"}/>}
         >
-        </Route> 
+        </Route>  */}
          
       </Routes>   
     </div>
