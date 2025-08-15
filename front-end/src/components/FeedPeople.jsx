@@ -26,6 +26,7 @@ const FeedPeople = ({people}) => {
 
 
   return (
+    
     <div  className="shadow-lg shadow-base-200 rounded-md overflow-clip mt-10 px-5 py-5 bg-base-300 flex flex-col space-y-4">
       <div className="flex space-x-2 items-center ">
         <img src={profilePic} alt="" className="size-18" />
@@ -57,7 +58,7 @@ const FeedPeople = ({people}) => {
             }
             </p>
           
-          <div className='flex  space-x-3'>
+          <div className='grid grid-cols-2 gap-x-2'>
             <button onClick={()=>handleSendRequest(_id)} className='btn btn-primary'><Send className='size-4'/>{isPending?" Sending Request..." : " Send Request"}</button>
             <button onClick={()=>handleIgnoreProfile(_id)} className='btn btn-secondary'><BadgeX className='size-5'/> Ignore Profile</button>
           </div>

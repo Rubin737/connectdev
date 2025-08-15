@@ -12,7 +12,7 @@ const Layout = ({isSidebar=true,children}) => {
         <div className='bg-base-300'>
         <Header/>
       </div>
-      <div className='flex-1 '>
+      <div className='flex-1  '>
         {children}
       </div>
       </div>

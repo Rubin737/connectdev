@@ -22,8 +22,14 @@ export const myConnections = async (req, res) => {
         },
       ],
     })
-      .populate("sender", "fullName bio")
-      .populate("receipient", "fullName bio");
+      .populate(
+        "sender",
+        "fullName bio location nativeLanguage learningLanguage profilePic"
+      )
+      .populate(
+        "receipient",
+        "fullName bio location nativeLanguage learningLanguage profilePic"
+      );
 
     const onlyConnections = connections.map((connection) => {
       if (connection.sender._id.toString() === loggedUserId.toString()) {

@@ -1,6 +1,7 @@
 import { Users } from 'lucide-react'
 import { ToastBar } from 'react-hot-toast';
 import { Link } from 'react-router-dom';
+import ConnectionCards from 'src/components/ConnectionCards';
 import FeedPeople from 'src/components/FeedPeople';
 import NoFeed from 'src/components/NoFeed';
 import NoFriends from 'src/components/NoFriends'
@@ -19,7 +20,7 @@ if(friedsError) return <p>Error Happened</p>
 
 
   return (
-      <section className='bg-base-100 px-5 py-5 '>
+      <section className='px-5 py-5 '>
         
         <div className='flex mx-auto justify-between'>
           <h3 className='font-bold text-2xl'>Your Friends</h3>
@@ -29,7 +30,11 @@ if(friedsError) return <p>Error Happened</p>
         </div>        
         {
           friendsList?.data?.length <= 0 ? <NoFriends/> : (
-            <div>I ma here</div>
+            <div className='grid grid-cols-2 gap-4 lg:grid-cols-3 my-10'>
+              {
+                friendsList?.data.map((connection,index)=><ConnectionCards key={index} connection={connection}/>)
+              }
+            </div>
           )
         }
         

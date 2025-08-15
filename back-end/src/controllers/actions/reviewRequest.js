@@ -29,7 +29,7 @@ export const reviewRequest = async (req, res) => {
       status: "interest",
     }).populate("sender receipient", "fullName");
 
-    console.log(findConnection);
+    
 
     if (!findConnection) {
       return res
@@ -37,7 +37,7 @@ export const reviewRequest = async (req, res) => {
         .json({ success: false, message: "Request is not exists" });
     }
 
-    console.log(findConnection);
+  
 
     findConnection.status = status;
     await findConnection.save();
@@ -45,10 +45,9 @@ export const reviewRequest = async (req, res) => {
     const saveFriendsOnSender = await User.findByIdAndUpdate(
       findConnection.sender,{$addToSet:{friends:findConnection.receipient}}
     )
-    // const saveFriendsOnRecipient = await User.findByIdAndUpdate(
-    //   findConnection.sender,{$addToSet:{friends:findConnection.sender}}
-    // )
-
+    const saveFriendsOnRecipient = await User.findByIdAndUpdate(
+      findConnection.sender,{$addToSet:{friends:findConnection.sender}}
+    )
 
 
     res.status(200).json({
