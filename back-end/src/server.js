@@ -5,7 +5,9 @@ import cookieParser from "cookie-parser";
 import { connectDB } from "./lib/db.js";
 import { connectRouter } from "./routes/connection.route.js";
 import { userRouter } from "./routes/user.route.js";
+
 import cors from "cors";
+import { chatRouter } from "./routes/chat.route.js";
 
 const app = express();
 app.use(
@@ -22,6 +24,7 @@ const PORT = process.env.PORT || 5001;
 app.use("/api/auth", router);
 app.use("/api/request", connectRouter);
 app.use("/api/getuser", userRouter);
+app.use("/api/chat", chatRouter)
 
 app.listen(5001, () => console.log(`server running on ${PORT}`));
 connectDB();

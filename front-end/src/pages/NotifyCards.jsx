@@ -24,35 +24,35 @@ const NotifyCards = ({requests}) => {
 
   return (
     <div
-      className="flex items-center w-2xl bg-base-300 gap-x-26 px-10 py-5 rounded-md"
+      className="flex  items-center px-5 w-full justify-between gap-4 bg-base-300   py-3 rounded-md"
     >
       <div key={requests._id} className="flex gap-2 items-center">
-        <img src={profilePic} alt="profile pic" className="size-13" />
+        <img src={profilePic} alt="profile-pic" className="size-13" />
         <div className="flex flex-col">
-          <h4 className="font-semibold text-sm pb-1.5">{fullName}</h4>
+          <h4 className="font-semibold text-sm ">{fullName}</h4>
           <div className="space-x-2">
-            <span className="flag-span-not">
+            <span className="flag-span-not bg-primary/50">
               <img
                 src={getFlag(nativeLanguage)}
-                alt=""
+                alt="flag"
                 className="inline-block size-3.5 mr-1"
               />
               <span>Native: </span>
               <span className="text-accent pl-0.5">{nativeLanguage}</span>
             </span>
-            <span className="flag-span-not !bg-base-100 border shadow-lg shadow-base-100">
+            <div className="flag-span-not !bg-base-100 border-[0.5px] shadow-lg shadow-base-100">
               <img
                 src={getFlag(learningLanguage)}
                 alt=""
-                className="inline-block size-3 mr-1"
+                className=" size-3 mr-1"
               />
-              Learning:{" "}
+              <span>Learning: </span>
               <span className="text-accent pl-0.5">{learningLanguage}</span>
-            </span>
+            </div>
           </div>
         </div>
       </div>
-      <div className="space-x-4 font-semibold">
+      <div className="space-x-2 font-semibold">
         <button
           onClick={() => handleAcceptRequest(requests._id)}
           className="btn btn-xs btn-accent"

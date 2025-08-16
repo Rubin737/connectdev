@@ -21,7 +21,7 @@ const ConnectionCards = ({connection}) => {
         </div>
 
         <div className="space-x-2">
-                <span className="flag-span-not">
+                <span className="flag-span-not bg-primary/50 border border-primary/50">
                     <img src={getFlag(nativeLanguage)} alt="" className="inline-block size-3 mr-1" />
                     <span>Native: </span><span className='text-accent pl-0.5'>{nativeLanguage}</span>
                 </span>

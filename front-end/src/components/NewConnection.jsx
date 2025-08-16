@@ -1,32 +1,31 @@
-import { Trash2 } from 'lucide-react'
+import { Clock, ClockIcon, MessageSquareText, Trash2 } from 'lucide-react'
 import React from 'react'
 
 const NewConnection = ({people}) => {
   const {fullName,profilePic} = people.sender
   return (
-    <div
-          className="flex items-center bg-base-300 gap-x-26 px-10 py-5 rounded-md"
-        >
-          <div className="flex gap-2 items-center">
-            <img src={profilePic} alt="profile pic" className="size-13" />
-            <div className="flex flex-col">
-              <h4 className="font-semibold text-sm pb-1.5">{fullName}</h4>
-              <div className="space-x-2">
-                <span className="flag-span-not">
-                  <span className="text-accent pl-0.5"></span>
-                </span>
-                <span className="flag-span-not !bg-base-100 border shadow-lg shadow-base-100"></span>
-              </div>
-            </div>
-          </div>
-          <div className="space-x-4 font-semibold">
-            <button>
-            </button>
-            <button  className="btn btn-xs btn-outline btn-error">
-              <Trash2 className="size-3" /> <span>ubh</span>
-            </button>
-          </div>
+    <div className='w-full bg-base-300 flex justify-between py-3 px-5 rounded-md'>
+      <div className='flex  space-x-2'>
+        <div>
+          <img src={profilePic} alt="profile-pic" className='w-10' />
+          <div></div>
         </div>
+        <div className='inline-flex flex-col'>
+          <span className='font-bold text-sm'>{fullName}</span>
+          <span className='font-semibold text-sm opacity-80'>{fullName} accepted your friend request</span>
+          <div className=' flex text-accent items-center font-semibold text-[12px]  opacity-70'><ClockIcon className='size-3 inline-block mr-1'/>
+          <span>Recently</span>
+          </div>        
+        </div>
+      </div>
+      
+      <div className=''>
+        <div className='bg-primary rounded-full text-[12px] px-2 py-0.5 cursor-pointer'>
+          <MessageSquareText className='size-3 inline-block mr-1 '/>
+          <span>New Friend</span>
+        </div>
+      </div>
+    </div>
   )
 }
 

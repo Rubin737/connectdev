@@ -13,7 +13,10 @@ export const signup = async (req, res) => {
     if (existingUser) {
       return res
         .status(400)
-        .json({ message: "Email Already exists,please use another email",success:false});
+        .json({
+          message: "Email Already exists,please use another email",
+          success: false,
+        });
       // return throw new Error("Email Already exists,please use another email");
     }
 
@@ -28,12 +31,12 @@ export const signup = async (req, res) => {
     });
     await newUser.save();
 
-    await upsertUserStream({
+     await upsertUserStream({
       id: newUser._id.toString(),
       name: newUser.fullName,
       image: newUser.profilePic,
     });
-
+    
     console.log(`user created for : ${newUser.fullName}`);
 
     const token = jwt.sign(
@@ -56,6 +59,8 @@ export const signup = async (req, res) => {
       data: newUser,
     });
   } catch (err) {
-    res.status(400).json({ success: false, message: err.message, valErrors:err.valErrors });
+    res
+      .status(400)
+      .json({ success: false, message: err.message, valErrors: err.valErrors });
   }
 };

@@ -4,6 +4,7 @@ import PageLoader from 'src/components/PageLoader';
 import { useIncommingRequest } from 'src/hooks/useIncommingRequest'
 import NotifyCards from './NotifyCards';
 import NewConnection from 'src/components/NewConnection';
+import NoNotification from 'src/components/NoNotification';
 
 const Notification = () => {                  
 
@@ -16,21 +17,22 @@ const Notification = () => {
 
  
   return (
-  <section className="flex flex-col items-center justify-center px-5 py-5">
-    <div className="mt-10">
-      <div>
-        <h1 className="text-2xl font-bold">Notifications</h1>
-        <div className="mt-4 inline-flex items-center space-x-2">
-          <UserPlus className="size-5" />
-          <span className="font-semibold">Friend Requests</span>
-          <span className="font-semibold bg-primary rounded-full px-2 text-sm">
-            {requestData.length || ""}
-          </span>
-        </div>
+  <section className="flex flex-col justify-center px-0 py-5 w-full">
+  <div className="mt-10 max-w-2xl w-full mx-auto">
+    <div>
+      <h1 className="text-2xl font-bold">Notifications</h1>
+      <div className="mt-4 inline-flex items-center space-x-2">
+        <UserPlus className="size-5" />
+        <span className="font-semibold">Friend Requests</span>
+        <span className="font-semibold bg-primary rounded-full px-2 text-sm">
+          {requestData.length || ""}
+        </span>
       </div>
-       <div>
-        {requestData.length <= 0 ? (
-        <NoFriends />
+    </div>
+
+    <div>
+      {requestData.length <= 0 ? (
+        <NoNotification/>
       ) : (
         <div className="flex flex-col gap-y-3 mt-5">
           {requestData.map((requests, index) => (
@@ -38,37 +40,36 @@ const Notification = () => {
           ))}
         </div>
       )}
-       </div>
-      
     </div>
+  </div>
 
-    <div className="mt-10">
-      <div>
-        
-        <div className="mt-4 inline-flex items-center space-x-2">
-          <BellIcon className="size-5" />
-          <span className="font-semibold">New Connections</span>
-          <span className="font-semibold bg-primary rounded-full px-2 text-sm">
-            {acceptedData.length || ""}
-          </span>
-        </div>
-      </div>
-       <div>
-        {requestData.length > 0 && 
-       (
-        <div className="flex flex-col w-2xl gap-y-3 mt-5">
+  <div className="mt-10 max-w-2xl w-full mx-auto">
+    {
+      acceptedData.length > 0 && (
+        <div>
+          <div className="mt-4 inline-flex items-center space-x-2">
+            <BellIcon className="size-5" />
+            <span className="font-semibold">New Connections</span>
+            <span className="font-semibold bg-primary rounded-full px-2 text-sm">
+              {acceptedData.length || ""}
+            </span>
+          </div >
+       </div>
+      )
+    }
+
+    <div>
+      {acceptedData.length > 0 && (
+        <div className="flex flex-col max-w-2xl w-full gap-y-3 mt-5 mx-auto">
           {acceptedData.map((people, index) => (
             <NewConnection key={index} people={people} />
           ))}
         </div>
       )}
-       </div>
-      
     </div>
-    
+  </div>
+</section>
 
-
-  </section>
 );
 
 }
