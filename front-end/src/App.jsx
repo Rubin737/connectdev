@@ -10,13 +10,19 @@ import PageLoader from './components/PageLoader'
 import { useAuthUser } from './hooks/useAuthUser'
 import Layout from './components/Layout'
 import { useSelector } from 'react-redux'
-import ConnectionRequests from './pages/ConnectionRequests'
+import ChatPage from './pages/ChatPage'
+import 'stream-chat-react/dist/css/v2/index.css';
+import VideoCall from './pages/VideoCall'
+import MyOwnRequests from './pages/myOwnRequests'
 
+// import ConnectionRequests from './pages/ConnectionRequests'
 const App = () => {
 const theme = useSelector(store=>store.theme);
 
 
 const {authUser,isLoading,isError,error} =  useAuthUser();
+console.log(authUser?.data?._id)
+
 
 if(isLoading) return <PageLoader/>
 
@@ -54,11 +60,21 @@ const IsOnboarded = authUser?.data?.isOnboarded
         element={IsAuthenticatedUser && IsOnboarded ? <Layout><Notification/></Layout> : <Navigate to={"/"}/>}
         >
         </Route> 
-        {/* <Route
-        path='/requests'
-        element={IsAuthenticatedUser && IsOnboarded ? <ConnectionRequests/> : <Navigate to={"/"}/>}
+        <Route
+        path='/chat/:id'
+        element={IsAuthenticatedUser && IsOnboarded ? <Layout isSidebar={false}><ChatPage/></Layout> : <Navigate to={"/login"}/>}
         >
-        </Route>  */}
+        </Route> 
+        <Route
+        path='/call/:id'
+        element={IsAuthenticatedUser && IsOnboarded ? <Layout isSidebar={false}><VideoCall/></Layout> : <Navigate to={"/login"}/>}
+        >
+        </Route> 
+        <Route
+        path='/my-requests'
+        element={IsAuthenticatedUser && IsOnboarded ? <Layout isSidebar><MyOwnRequests/></Layout> : <Navigate to={"/login"}/>}
+        >
+        </Route> 
          
       </Routes>   
     </div>

@@ -5,9 +5,13 @@ import Header from './Header'
 const Layout = ({isSidebar=true,children}) => {
   return (
     <div className='flex bg-base-200'>
-      <div className='flex h-screen w-48 bg-base-300  py-5 px-2'>
-        {isSidebar && <Sidebar/>}
-      </div>
+     {
+        isSidebar && 
+         (<div className='flex h-screen w-48 bg-base-300  py-5 px-2'>
+           <Sidebar/>
+         </div>)
+     }
+      
       <div className='flex-1 flex flex-col '>
         <div className='bg-base-300'>
         <Header/>

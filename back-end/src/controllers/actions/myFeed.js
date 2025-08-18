@@ -22,7 +22,6 @@ export const myFeed = async (req, res) => {
       feed.add(people.receipient.toString());
     });
 
-    console.log(feed);
 
     const createFeed = await User.find({
       $and: [

@@ -24,7 +24,7 @@ if(friedsError) return <p>Error Happened</p>
         
         <div className='flex mx-auto justify-between'>
           <h3 className='font-bold text-2xl'>Your Friends</h3>
-          <Link to={"/requests"}>
+          <Link to={"/my-requests"}>
           <button className='btn bg-base-100'><Users size={18}/>Friend Requests</button>
           </Link>
         </div>        

@@ -1,12 +1,12 @@
 import { MapPinCheck, MessageSquareText } from 'lucide-react'
-import React from 'react'
+import { Link } from 'react-router-dom'
 import { capitalizeString } from 'src/utils/capitalizeString'
 import { getFlag } from 'src/utils/getFlag'
 
 const ConnectionCards = ({connection}) => {
 
-    const {profilePic,learningLanguage,nativeLanguage,fullName,location} = connection  
-  
+    const {profilePic,learningLanguage,nativeLanguage,fullName,location,_id} = connection;
+    
   return (
     <div className='flex flex-col space-y-3 bg-base-300 px-3 py-5 rounded-md'>
         <div className="flex space-x-2 items-center ">
@@ -31,7 +31,9 @@ const ConnectionCards = ({connection}) => {
                 </span>
         </div>
         <div>
+            <Link to={`/chat/${_id}`}>
             <button className='btn btn-accent  w-full'><MessageSquareText className='size-4.5'/> Message</button>
+            </Link>
         </div>
     </div>
 

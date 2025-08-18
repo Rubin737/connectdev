@@ -18,6 +18,20 @@ export const getReqs = async () => {
   return data;
 };
 
+//my-own requests
+
+export const getMyOwnRequests = async () => {
+  try {
+    const { data } = await axiosInstance.get("/getuser/my-requests");
+    return data;
+  } catch (error) {
+    console.log(error)
+  }
+};
+
+
+
+
 //accpt request
 
 export const patchAcceptReq = async ({ statusType, id }) => {
@@ -27,6 +41,7 @@ export const patchAcceptReq = async ({ statusType, id }) => {
   return data;
 };
 
+//reject
 export const patchrejectReq = async ({ statusType, id }) => {
   const { data } = await axiosInstance.patch(
     `/request/review/${statusType}/${id}`
@@ -46,3 +61,4 @@ export const sendFriendRequest = async ({statusType,id}) => {
     const {data} = await axiosInstance.post(`/request/send/${statusType}/${id}`);
     return data;
   };
+
