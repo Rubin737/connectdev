@@ -20,17 +20,17 @@ if(friedsError) return <p>Error Happened</p>
 
 
   return (
-      <section className='px-5 py-5 '>
+      <section className='sm:px-5 px-2 py-5 '>
         
-        <div className='flex mx-auto justify-between'>
-          <h3 className='font-bold text-2xl'>Your Friends</h3>
+        <div className='flex w-full gap-x-8  justify-between  items-center'>
+          <h3 className='font-bold lg:text-2xl sm:text-xl text-sm '>Your Friends</h3>
           <Link to={"/my-requests"}>
-          <button className='btn bg-base-100'><Users size={18}/>Friend Requests</button>
+          <button className='sm:btn-sm border-primary btn btn-xs bg-base-100'><Users className='size-3 sm:size-4'/>Friend Requests</button>
           </Link>
         </div>        
         {
           friendsList?.data?.length <= 0 ? <NoFriends/> : (
-            <div className='grid grid-cols-2 gap-4 lg:grid-cols-3 my-10'>
+            <div className='grid grid-cols-2 md:grid-cols-2  gap-3 lg:grid-cols-3 my-10'>
               {
                 friendsList?.data.map((connection,index)=><ConnectionCards key={index} connection={connection}/>)
               }
@@ -41,12 +41,12 @@ if(friedsError) return <p>Error Happened</p>
         {
           isFeedLoading ? <PageLoader/> :
           (<div>
-          <h3 className='text-2xl font-semibold tracking-tight'>Meet new Learners</h3>
-          <p className='text-md opacity-90'>Discover perfect language exchange partners based on your profile</p>
+          <h3 className='sm:text-2xl text-sm font-semibold'>Meet new Learners</h3>
+          <p className='text-sm text-primary font-mons opacity-90'>Discover perfect language exchange partners based on your profile</p>
           {
             myFeed?.data?.length <= 0 ? <NoFeed/> :(
               <div>
-                <div className='grid  sm:grid-cols-2 lg:grid-cols-3 gap-4'>
+                <div className='grid sm:grid-cols-3 mt-5 gap-3 grid-cols-2 '>
                   {
                     myFeed?.data?.map((people,index)=><FeedPeople key={index} people={people}/>)
                   }

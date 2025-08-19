@@ -20,7 +20,7 @@ export const inncommingReqs = async (req, res) => {
       "fullName nativeLanguage learningLanguage profilePic _id"
     );
 
-    console.log("Accepted Reqs:", acceptedReqs);
+    
 
     if (!commingReqs) {
       return res.status(404).json({

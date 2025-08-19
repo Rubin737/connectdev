@@ -13,7 +13,8 @@ import { useSelector } from 'react-redux'
 import ChatPage from './pages/ChatPage'
 import 'stream-chat-react/dist/css/v2/index.css';
 import VideoCall from './pages/VideoCall'
-import MyOwnRequests from './pages/myOwnRequests'
+import { Toaster } from 'react-hot-toast'
+import MyOwnRequests from './pages/MyOwnRequests'
 
 // import ConnectionRequests from './pages/ConnectionRequests'
 const App = () => {
@@ -21,7 +22,6 @@ const theme = useSelector(store=>store.theme);
 
 
 const {authUser,isLoading,isError,error} =  useAuthUser();
-console.log(authUser?.data?._id)
 
 
 if(isLoading) return <PageLoader/>
@@ -32,6 +32,7 @@ const IsOnboarded = authUser?.data?.isOnboarded
 
  return (
     <div data-theme={theme}>
+      <Toaster position="top-right" reverseOrder={false} />
       <Routes>
          <Route
          path='/'

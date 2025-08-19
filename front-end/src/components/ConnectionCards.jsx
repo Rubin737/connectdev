@@ -5,17 +5,18 @@ import { getFlag } from 'src/utils/getFlag'
 
 const ConnectionCards = ({connection}) => {
 
-    const {profilePic,learningLanguage,nativeLanguage,fullName,location,_id} = connection;
+ const {profilePic,learningLanguage,nativeLanguage,fullName,location,_id} = connection;
     
   return (
-    <div className='flex flex-col space-y-3 bg-base-300 px-3 py-5 rounded-md'>
+    <div className='flex flex-col rounded-md p-3 w-full max-w-sm overflow-hidden 
+                sm:space-y-3 gap-y-1 bg-base-300 sm:px-3 px-2 py-3 sm:py-5'>
         <div className="flex space-x-2 items-center ">
-            <img src={profilePic} alt="profile-pic" className="size-10" />
-            <div>
-                <span className='font-semibold text-sm'>{fullName}</span>
+            <img src={profilePic} alt="profile-pic" className="sm:size-10 size-8" />
+            <div className='-mt-2 sm:mt-0'>
+                <span className='font-semibold sm:text-sm text-[10px]'>{fullName}</span>
                 <div className="flex space-x-1 items-center">
-                <MapPinCheck className="size-3 opacity-70" />
-                <span className="text-[10px] font-semibold opacity-70">{capitalizeString(location)}</span>
+                <MapPinCheck className="sm:size-3 size-2 opacity-70" />
+                <span className="text-[8px] sm:[10px] font-semibold opacity-70">{capitalizeString(location)}</span>
                 </div>
             </div>
         </div>
@@ -32,7 +33,7 @@ const ConnectionCards = ({connection}) => {
         </div>
         <div>
             <Link to={`/chat/${_id}`}>
-            <button className='btn btn-accent  w-full'><MessageSquareText className='size-4.5'/> Message</button>
+            <button className='btn btn-xs sm:btn-sm btn-accent w-full'><MessageSquareText className='sm:size-4.5 size-3'/> Message</button>
             </Link>
         </div>
     </div>

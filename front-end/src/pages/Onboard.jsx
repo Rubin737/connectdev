@@ -55,15 +55,15 @@ const Onboard = () => {
 
   return (
     <section data-theme="dim" className='flex justify-center items-center py-5  min-h-screen font-semibold '>
-      <div className='w-xl px-10 py-3 border rounded-2xl'>
+      <div className='w-full max-w-xl px-3 sm:px-10 mx-2 sm:mx-0  py-5 border rounded-2xl '>
         <div className='flex items-center justify-center flex-col gap-y-3'>
-          <h1 className='text-lg font-mons'>Complete Your Profile</h1>
-          <img src={formData.profilePic} alt="" className='w-24 h-24' />
+          <h1 className='text-lg sm:text-xl font-mons'>Complete Your Profile</h1>
+          <img src={formData.profilePic} alt="Avatar" className='sm:w-24 w-20' />
           <button onClick={changeAvatar}  className='btn btn-secondary'>{<ShipWheelIcon  size={18}/>}Generate Random Avatar</button>
         </div> 
         <div>
           <form onSubmit={handleLoginForm} 
-          className='w-full flex flex-col gap-y-3'>
+          className='w-full flex flex-col gap-y-3 mt-4'>
             <div className="signup-div">
               <label className='signup-span'>Full Name</label>
               <input required type="text" value={formData.fullName} onChange={(e)=>setFormData({...formData,fullName:e.target.value})} placeholder='Your Full Name' className='input rounded-3xl focus:outline-none w-full'/>
@@ -78,7 +78,7 @@ const Onboard = () => {
                 error && <ErrorMessage error={error.response?.data?.valErrors.bio} /> 
               }
             </div>
-            <div className='grid grid-cols-2 gap-x-2'>
+            <div className='grid grid-cols-1 sm:grid-cols-2 gap-2'>
               <div className='flex flex-col gap-y-2'>
                <label className='signup-span'>Native Language</label>
                <select   className="select focus:outline-none rounded-3xl"
@@ -115,7 +115,7 @@ const Onboard = () => {
               <label className='signup-span'>Location</label>
               <div className='relative'>
                 <input required type="text" value={formData.location} onChange={(e)=>setFormData({...formData,location:e.target.value})} placeholder='Chennai, India' className='input rounded-3xl pl-10 focus:outline-none w-full'/>
-                <MapPinPen className='absolute left-2 top-[25%] z-50' size={20}/>
+                <MapPinPen className='absolute left-2 top-1/2 -translate-y-1/2 z-50' size={20}/>
               </div>
               {
                 error && <ErrorMessage error={error.response?.data?.valErrors.location} /> 

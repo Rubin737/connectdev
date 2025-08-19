@@ -17,14 +17,14 @@ const Notification = () => {
 
  
   return (
-  <section className="flex flex-col justify-center px-0 py-5 w-full">
+  <section className="flex flex-col justify-center px-2 sm:px-0 py-5 w-full">
   <div className="mt-10 max-w-2xl w-full mx-auto">
     <div>
-      <h1 className="text-2xl font-bold">Notifications</h1>
+      <h1 className="sm:text-2xl text-lg font-bold">Notifications</h1>
       <div className="mt-4 inline-flex items-center space-x-2">
         <UserPlus className="size-5" />
         <span className="font-semibold">Friend Requests</span>
-        <span className="font-semibold bg-primary rounded-full px-2 text-sm">
+        <span className="font-semibold bg-base-100 rounded-full px-2 text-sm">
           {requestData.length || ""}
         </span>
       </div>
@@ -50,7 +50,7 @@ const Notification = () => {
           <div className="mt-4 inline-flex items-center space-x-2">
             <BellIcon className="size-5" />
             <span className="font-semibold">New Connections</span>
-            <span className="font-semibold bg-primary rounded-full px-2 text-sm">
+            <span className="font-semibold bg-base-100 rounded-full px-2 text-sm">
               {acceptedData.length || ""}
             </span>
           </div >

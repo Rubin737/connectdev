@@ -36,8 +36,8 @@ const Login = () => {
 
   return (
     <section className="h-screen flex justify-center items-center">
-          <div className="w-[600px] flex border rounded-2xl overflow-hidden font-inter">
-            <div className="w-1/2 py-8 flex flex-col justify-center px-8">
+          <div className="w-full max-w-2xl flex flex-col mx-2 sm:flex-row border rounded-2xl overflow-hidden font-inter">
+            <div className=" flex flex-col justify-center sm:w-1/2 w-full sm:py-8 py-3 px-3 sm:px-8">
               <div className="flex items-center gap-x-2 mb-6">
                 <ShipWheelIcon color='green' size={35} />
                 <h2 className="text-2xl tracking-wider bg-linear-to-r from-green-500 to-green-800 bg-clip-text text-transparent   font-mono  font-bold">Steamify</h2>
@@ -48,12 +48,12 @@ const Login = () => {
               >
                 <div className="signup-div">
                   <label className="signup-span">Email address</label>
-                  <input type="email" placeholder='mail.site.com' className="input focus:outline-none focus:ring-0 border " value={signinData.email} onChange={(e)=>setSigninData({...signinData,email:e.target.value})} />
+                  <input type="email" placeholder='mail.site.com' className="input" value={signinData.email} onChange={(e)=>setSigninData({...signinData,email:e.target.value})} />
                 </div>
                 <div className="signup-div">
                   <div className='relative'>
                   <label className="signup-span mb-2">Password</label>
-                  <input type={isPassVisible?"text" : "password"} placeholder='********' className="input focus:outline-none focus:ring-0 required pr-10" value={signinData.password}  onChange={(e)=>{setSigninData({...signinData,password:e.target.value})}} />
+                  <input type={isPassVisible?"text" : "password"} placeholder='********' className="input required pr-10" value={signinData.password}  onChange={(e)=>{setSigninData({...signinData,password:e.target.value})}} />
                    { signinData.password && (
                     isPassVisible ?
                     <Eye className='absolute z-10  top-[55%] right-[10%] opacity-50 cursor-pointer ' size={18} onClick={()=>setIsPassvisble(false)} />
@@ -66,15 +66,15 @@ const Login = () => {
                     error && <ErrorMessage error={error?.response?.data?.message} />
                    }  
                 </div>
-                <button className='btn btn-accent font-mons'>{!isSuccess ? <LockKeyhole size={18}/> :
+                <button className='btn btn-secondary font-mons'>{!isSuccess ? <LockKeyhole size={18}/> :
                 <LockKeyholeOpen size={18}/> }{isPending ? "Logging in..." : (!isSuccess ? "Sign in" : "Sign in Sucessfully") }</button>
                 <p className='text-[13px]'>Don't  have an account? <Link to={'/signup'}>
-                <strong className='underline text-secondary'>Create One</strong>
+                <strong className='underline text-accent'>Create One</strong>
                 </Link></p>
               </form>
             </div>
     
-            <div className="w-1/2 bg-green-950 text-white flex flex-col justify-center items-center py-5 px-4">
+            <div className="w-1/2 hidden sm:flex bg-green-950 text-white  flex-col justify-center items-center py-5 px-4">
               <img src={signinImg} width={300} alt="Signup visual" className="mb-4" />
               <p className="text-center text-sm font-bold">
                 Connect with language partners worldwide.

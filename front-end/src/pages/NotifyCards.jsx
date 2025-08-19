@@ -24,12 +24,12 @@ const NotifyCards = ({requests}) => {
 
   return (
     <div
-      className="flex  items-center px-5 w-full justify-between gap-4 bg-base-300   py-3 rounded-md"
+      className="flex  items-center px-2 sm:px-5 w-full justify-between gap-4 bg-base-100   py-3 rounded-md"
     >
-      <div key={requests._id} className="flex gap-2 items-center">
-        <img src={profilePic} alt="profile-pic" className="size-13" />
+      <div key={requests._id} className="flex gap-2">
+        <img src={profilePic} alt="profile-pic" className="sm:size-13 size-10" />
         <div className="flex flex-col">
-          <h4 className="font-semibold text-sm ">{fullName}</h4>
+          <h4 className="font-semibold sm:text-sm text-xs">{fullName}</h4>
           <div className="space-x-2">
             <span className="flag-span-not bg-primary/50">
               <img
@@ -52,7 +52,7 @@ const NotifyCards = ({requests}) => {
           </div>
         </div>
       </div>
-      <div className="space-x-2 font-semibold">
+      <div className="sm:space-x-2 space-y-2 font-semibold">
         <button
           onClick={() => handleAcceptRequest(requests._id)}
           className="btn btn-xs btn-accent"

@@ -7,6 +7,7 @@ import { getToken } from 'src/lib/dbChatToken'
 import { StreamChat } from 'stream-chat'
 import { Channel, ChannelHeader, Chat, MessageInput, MessageList, Thread, Window } from 'stream-chat-react'
 import VideoCallBtn from '../components/VideoCallBtn'
+import MessageNotify from 'src/components/MessageNotify'
 
 const ChatPage = () => {
 
@@ -87,8 +88,9 @@ const ChatPage = () => {
    return (
     <div className="h-screen flex items-center justify-center bg-gradient-to-b from-[#c9e8c9] to-[#b7e7bb] overflow-hidden">
       
-      <div className="w-[80%] lg:-mt-24 max-w-[1000px] h-[65%] rounded-2xl shadow-2xl bg-white flex flex-col overflow-hidden">
+      <div className="lg:w-[80%] w-[90%] lg:-mt-24 max-w-[1000px] lg:h-[65%] h-[90%] rounded-2xl shadow-2xl bg-white flex flex-col overflow-hidden">
         <Chat client={chatClient} >
+          <MessageNotify/>
           <Channel channel={chatChannel}>
             <div className='relative w-full'>
               <VideoCallBtn handleVideoCall={handleVideoCall}/>

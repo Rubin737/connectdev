@@ -13,7 +13,7 @@
 
 @layer components {
   .signup-span{
-    @apply label text-white text-sm font-semibold;
+    @apply label text-primary text-sm font-semibold;
   }
   .signup-div{
     @apply flex flex-col gap-y-1.5 ;
@@ -22,13 +22,16 @@
     @apply flex  space-x-2 btn   rounded-full;
   }
   .flag-span{
-    @apply inline-flex items-center bg-primary/50 text-sm px-3  py-0.5 rounded-full font-semibold;
+    @apply inline-flex items-center bg-primary/50 sm:text-sm  text-[10px]   px-3 pr-5  py-0.5 rounded-full font-semibold;
   }
   .seemore-span{
     @apply pl-1 underline decoration-white underline-offset-1 text-accent cursor-pointer;
   }
   .flag-span-not{
-    @apply text-[10px] inline-flex items-center rounded-full px-1;
+    @apply sm:text-[10px] text-[8px] inline-flex  items-center rounded-full px-1;
+  }
+  .nav-icons-outer{
+    @apply btn btn-xs sm:btn-lg btn-square bg-base-100 text-primary;
   }
 
 }

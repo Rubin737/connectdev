@@ -7,7 +7,7 @@ const Layout = ({isSidebar=true,children}) => {
     <div className='flex bg-base-200'>
      {
         isSidebar && 
-         (<div className='flex h-screen w-48 bg-base-300  py-5 px-2'>
+         (<div className='h-screen hidden sm:flex w-48 bg-base-300  py-5 px-2'>
            <Sidebar/>
          </div>)
      }
