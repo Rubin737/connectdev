@@ -1,24 +1,21 @@
-import { useMutation, useQueryClient } from '@tanstack/react-query'
-import { Globe, MapPinPen,  ShipWheelIcon,  Webhook } from 'lucide-react'
-import React, { useState } from 'react'
+import { Globe, MapPinPen,  ShipWheelIcon } from 'lucide-react'
+import { useState } from 'react'
 import toast from 'react-hot-toast'
 import ErrorMessage from 'src/components/ErrorMessage'
 import { LANGUAGES } from 'src/constants/constants'
 import { useAuthUser } from 'src/hooks/useAuthUser'
-import { updateUser } from 'src/lib/dbAuth'
+import { useOnboarding } from 'src/hooks/useOnboarding'
+import userImg from '../assets/images/user.png'
 
-const Onboard = () => {
+const OnboardingPage = () => {
 
- const {authUser} = useAuthUser();
- 
- const {fullName,bio,profilePic,isOnboarded,location,nativeLanguage,learningLanguage,email,} = authUser.data;
-
- const queryClient = useQueryClient();
+ const {authUser} = useAuthUser(); 
+ const {fullName,bio,profilePic,location,nativeLanguage,learningLanguage,email,} = authUser.data;
 
  const [formData,setFormData] = useState({
   fullName:fullName || "",
   bio:bio || "",
-  profilePic : profilePic || "",
+  profilePic : profilePic || userImg,
   location : location || "Chennai",
   learningLanguage : learningLanguage || "German",
   email : email || "",
@@ -26,19 +23,9 @@ const Onboard = () => {
  })
 
 
- const {mutate:updateMutation,error,isPending,isSuccess} = useMutation({
-  mutationFn:updateUser,
-  onSuccess:(data)=>{
-    queryClient.invalidateQueries({queryKey:["authUser"]})
-  },
-  onError:(err)=>{
-    console.log(err);
-    toast.success("Invalid Inputs")
-  },
-  retry:false,
+ const {updateMutation,isPending,isSuccess,error} = useOnboarding();
 
- })
-
+ const errorInfo = error?.response?.data || {}
   
   const handleLoginForm = (e)=>{
     e.preventDefault(); 
@@ -49,12 +36,12 @@ const Onboard = () => {
   const changeAvatar = ()=>{
     const profileNumber = Math.floor(Math.random() * 100) + 1;
     const profilePic = `https://avatar.iran.liara.run/public/${profileNumber}`;
-    console.log(profilePic)
-    setFormData({...formData,profilePic})
+    setFormData({...formData,profilePic});
+    setTimeout(()=>toast.success(" 🖼 New pic is generated successfully!"),1000)
   }
 
   return (
-    <section data-theme="dim" className='flex justify-center items-center py-5  min-h-screen font-semibold '>
+    <section  className='flex justify-center items-center py-5  min-h-screen font-semibold '>
       <div className='w-full max-w-xl px-3 sm:px-10 mx-2 sm:mx-0  py-5 border rounded-2xl '>
         <div className='flex items-center justify-center flex-col gap-y-3'>
           <h1 className='text-lg sm:text-xl font-mons'>Complete Your Profile</h1>
@@ -68,14 +55,14 @@ const Onboard = () => {
               <label className='signup-span'>Full Name</label>
               <input required type="text" value={formData.fullName} onChange={(e)=>setFormData({...formData,fullName:e.target.value})} placeholder='Your Full Name' className='input rounded-3xl focus:outline-none w-full'/>
               {
-                error && <ErrorMessage error={error.response?.data?.valErrors.fullName} /> 
+                error && <ErrorMessage error={errorInfo?.valErrors?.fullName} /> 
               }
             </div>
             <div className='signup-div'>
               <label className='signup-span'>Bio</label>
               <textarea required value={formData.bio} onChange={(e)=>setFormData({...formData,bio:e.target.value})} placeholder='Bio' className='textarea textarea-sm w-full focus:outline-none !text-sm !rounded-xl max-h-[120px] '></textarea>
               {
-                error && <ErrorMessage error={error.response?.data?.valErrors.bio} /> 
+                error && <ErrorMessage error={errorInfo?.valErrors?.bio} /> 
               }
             </div>
             <div className='grid grid-cols-1 sm:grid-cols-2 gap-2'>
@@ -109,7 +96,7 @@ const Onboard = () => {
               </div>
             </div>
             {
-                error && <ErrorMessage error={error.response?.data?.valErrors.language} />
+                error && <ErrorMessage error={errorInfo?.valErrors?.language} />
               }
             <div className="signup-div">
               <label className='signup-span'>Location</label>
@@ -118,7 +105,7 @@ const Onboard = () => {
                 <MapPinPen className='absolute left-2 top-1/2 -translate-y-1/2 z-50' size={20}/>
               </div>
               {
-                error && <ErrorMessage error={error.response?.data?.valErrors.location} /> 
+                error && <ErrorMessage error={errorInfo?.valErrors?.location} /> 
               }
             </div>
             <button
@@ -131,4 +118,4 @@ const Onboard = () => {
 
 }
 
-export default Onboard
+export default OnboardingPage

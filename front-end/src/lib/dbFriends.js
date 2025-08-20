@@ -24,8 +24,8 @@ export const getMyOwnRequests = async () => {
   try {
     const { data } = await axiosInstance.get("/getuser/my-requests");
     return data;
-  } catch (error) {
-    console.log(error)
+  } catch () {
+    //
   }
 };
 

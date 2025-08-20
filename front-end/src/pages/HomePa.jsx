@@ -1,16 +1,16 @@
 import { Users } from 'lucide-react'
 import { ToastBar } from 'react-hot-toast';
 import { Link } from 'react-router-dom';
-import ConnectionCards from 'src/components/ConnectionCards';
-import FeedPeople from 'src/components/FeedPeople';
-import NoFeed from 'src/components/NoFeed';
-import NoFriends from 'src/components/NoFriends'
+import ConnectionCards from 'src/components/home/ConnectionCards';
+import FeedPeople from 'src/components/home/FeedPeople';
+import NoFeed from 'src/components/home/NoFeed';
+import NoFriends from 'src/components/home/NoFriends'
 import PageLoader from 'src/components/PageLoader';
 import { useFeed } from 'src/hooks/useFeed';
 import { useFriendsList } from 'src/hooks/useFriendsList'
 
 
-const Home = () => {
+const HomePage = () => {
 
 const {friendsList,isLoading:isFriendsListLoading,error:friedsError} = useFriendsList();
 const {myFeed,isLoading:isFeedLoading,error:feedError} = useFeed();
@@ -62,4 +62,4 @@ if(friedsError) return <p>Error Happened</p>
   
 }
 
-export default Home
+export default HomePage

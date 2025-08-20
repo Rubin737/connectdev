@@ -3,12 +3,14 @@ import React from 'react'
 import { useAcceptRequest } from 'src/hooks/useAcceptRequest';
 import { useRejectRequest } from 'src/hooks/useRejectRequest';
 import { getFlag } from 'src/utils/getFlag';
+import userImg from "../../assets/images/user.png"
 
 const NotifyCards = ({requests}) => {
 
   const { fullName, profilePic, learningLanguage, nativeLanguage, _id } = requests.sender;
   const {isAcceptPending,acceptError,acceptMutation,acceptSuccess} = useAcceptRequest();
   const {isRejectPending,rejectError,rejectMutation,rejectSuccess} = useRejectRequest();
+  
 
 
   const handleAcceptRequest = (id)=>{
@@ -27,7 +29,7 @@ const NotifyCards = ({requests}) => {
       className="flex  items-center px-2 sm:px-5 w-full justify-between gap-4 bg-base-100   py-3 rounded-md"
     >
       <div key={requests._id} className="flex gap-2">
-        <img src={profilePic} alt="profile-pic" className="sm:size-13 size-10" />
+        <img src={profilePic || userImg} alt="profile-pic" className="sm:size-13 size-10" />
         <div className="flex flex-col">
           <h4 className="font-semibold sm:text-sm text-xs">{fullName}</h4>
           <div className="space-x-2">
@@ -52,7 +54,7 @@ const NotifyCards = ({requests}) => {
           </div>
         </div>
       </div>
-      <div className="sm:space-x-2 space-y-2 font-semibold">
+      <div className="sm:space-x-2 sm:flex flex-col gap-1 space-y-2 font-semibold">
         <button
           onClick={() => handleAcceptRequest(requests._id)}
           className="btn btn-xs btn-accent"

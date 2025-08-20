@@ -1,14 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const menuSlice = createSlice({
-    name:"sidebar",
-    initialState:false,
-    reducers:{
-        openSideBar : (state)=>{
-            return !state
-        }
-    }
-})
+  name: "sidebar",
+  initialState: true,
+  reducers: {
+    openSideBar: (state) => !state, 
+    closeSideBar: () => true,
+  },
+});
 
-export const {openSideBar} = menuSlice.actions;
+export const {openSideBar,closeSideBar} = menuSlice.actions;
 export default menuSlice.reducer

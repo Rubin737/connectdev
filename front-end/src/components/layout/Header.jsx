@@ -1,14 +1,16 @@
 import React from 'react'
-import Logo from './Logo'
+import Logo from '../Logo'
 import { BellIcon, LogOut, Palette, SquareMenuIcon } from 'lucide-react'
 import { useAuthUser } from 'src/hooks/useAuthUser'
 import { Link, useLocation } from 'react-router-dom'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { logoutUser } from 'src/lib/dbAuth'
-import TheemeSelector from './ThemeSelector'
-import ThemeSelector from './ThemeSelector'
+import ThemeSelector from '../ThemeSelector'
 import { useDispatch } from 'react-redux'
 import { openSideBar } from 'src/store/menuSlice'
+import toast from 'react-hot-toast'
+import { useLogout } from 'src/hooks/useLogout'
+import { useIncommingRequest } from 'src/hooks/useIncommingRequest'
 
 
 
@@ -20,20 +22,11 @@ const Header = () => {
 
   const dispatch = useDispatch();
 
-  const queryClient = useQueryClient();
+  const {logoutMutation,isLoading,isError} = useLogout()
+  const {IncommingReqs} = useIncommingRequest()
 
-  const {mutate:logoutMutation,isLoading,isError} = useMutation({
-     mutationFn:logoutUser,
-     onSuccess:(data)=>{
-        console.log(data);
-        queryClient.invalidateQueries({queryKey:["authUser"]})
-     },
-     onError:(err)=>{
-        console.log(err)
-     }
-  })
-
-
+  const requestData = IncommingReqs?.data?.commingReqs || [];
+  const acceptedData = IncommingReqs?.data?.acceptedReqs || [];
 
   const handleLogout = ()=>{
     logoutMutation(); 
@@ -53,7 +46,12 @@ const Header = () => {
           </div>
         </div>
         <div className='flex gap-x-1 sm:gap-x-3 cursor-pointer items-center'>
-          <div className='nav-icons-outer'><Link to={"/notifications"}><BellIcon className='size-3 sm:size-5'/></Link></div>
+          <div className='nav-icons-outer relative'>
+            <Link to={"/notifications"}><BellIcon className='size-3 sm:size-5'/></Link>
+            {
+            (requestData?.length > 0 )  && <span className='animate-bounce text-3xl sm:text-5xl text-primary font-bold absolute -top-2 sm:top-0 right-0'>.</span>
+            }
+          </div>
           <div>
           <div>
             <span><ThemeSelector/></span>

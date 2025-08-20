@@ -10,7 +10,6 @@ export const getAuthUser = async () => {
     const { data } = await axiosInstance.get("/auth/currentuser");
     return data;
   } catch (error) {
-    console.log(error.message, "Cant logout");
     return null;
   }
 };

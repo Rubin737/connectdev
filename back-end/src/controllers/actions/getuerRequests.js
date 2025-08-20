@@ -12,7 +12,6 @@ export const userRequests = async (req, res) => {
       .status(200)
       .json({ success: "true", data: connection, message: "User Requests" });
   } catch (error) {
-    console.log(error.message);
     res.status(500).json({
       message: `Internal Error : ${error.message}`,
     });

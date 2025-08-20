@@ -1,5 +1,6 @@
 import { Cable } from 'lucide-react'
-import React from 'react'
+import userImg from '../../assets/images/user.png'
+
 
 const RequestCards = ({req}) => {
   
@@ -10,7 +11,7 @@ const RequestCards = ({req}) => {
     <div className='w-full bg-base-100 flex justify-between py-3 px-5 rounded-md'>
       <div className='flex w-2/3 sm:w-auto  space-x-2'>
         <div>
-          <img src={profilePic} alt="profile-pic" className='w-10' />
+          <img src={profilePic||userImg } alt="profile-pic" className='w-10' />
           <div></div>
         </div>
         <div className='inline-flex flex-col'>

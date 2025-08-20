@@ -1,11 +1,11 @@
 import { AudioLines } from 'lucide-react';
 import React from 'react'
-import NoFriends from 'src/components/NoFriends';
-import NoPendingReqs from 'src/components/NoPendingReqs';
-import RequestCards from 'src/components/RequestCards';
+import NoFriends from 'src/components/home/NoFriends';
+import NoPendingReqs from 'src/components/own-request/NoPendingReqs';
+import RequestCards from 'src/components/own-request/RequestCards';
 import { useMyOwnRequests } from 'src/hooks/useMyRequests'
 
-const MyOwnRequests = () => {
+const MyRequestsPage = () => {
 
  const {requests,isLoading,error} = useMyOwnRequests();
  const myRequests = requests?.data || []
@@ -36,4 +36,4 @@ const MyOwnRequests = () => {
   )
 }
 
-export default MyOwnRequests
+export default MyRequestsPage

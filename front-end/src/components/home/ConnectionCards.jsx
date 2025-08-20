@@ -2,6 +2,7 @@ import { MapPinCheck, MessageSquareText } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { capitalizeString } from 'src/utils/capitalizeString'
 import { getFlag } from 'src/utils/getFlag'
+import userImg from '../../assets/images/user.png'
 
 const ConnectionCards = ({connection}) => {
 
@@ -11,7 +12,7 @@ const ConnectionCards = ({connection}) => {
     <div className='flex flex-col rounded-md p-3 w-full max-w-sm overflow-hidden 
                 sm:space-y-3 gap-y-1 bg-base-300 sm:px-3 px-2 py-3 sm:py-5'>
         <div className="flex space-x-2 items-center ">
-            <img src={profilePic} alt="profile-pic" className="sm:size-10 size-8" />
+            <img src={profilePic || userImg} alt="profile-pic" className="sm:size-10 size-8" />
             <div className='-mt-2 sm:mt-0'>
                 <span className='font-semibold sm:text-sm text-[10px]'>{fullName}</span>
                 <div className="flex space-x-1 items-center">

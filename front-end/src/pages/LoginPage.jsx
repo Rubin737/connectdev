@@ -1,41 +1,29 @@
 import { Eye, EyeOff, LockKeyhole, LockKeyholeOpen, ShipWheelIcon } from 'lucide-react'
-import React, { useState } from 'react'
+import { useState } from 'react'
 import signinImg from '../assets/images/signin-img.png';
 import { Link } from 'react-router-dom';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { loginUser } from 'src/lib/dbAuth';
 import ErrorMessage from 'src/components/ErrorMessage';
+import { useLogin } from 'src/hooks/useLogin';
 
-const Login = () => {
+const LoginPage = () => {
 
   const [signinData,setSigninData] = useState({
-    email:"myemail@gmail.com",
-    password:"Rubin@123",
+    email:"",
+    password:"",
   })
-
-  const queryClient = useQueryClient();
 
   const [isPassVisible,setIsPassvisble] = useState(false);
 
-  const {mutate:loginMutation,error,isPending,isSuccess} = useMutation({
-    mutationFn:loginUser,
-    onSuccess:(data)=>{
-      queryClient.invalidateQueries({queryKey:["authUser"]})
-    },
-    onError:(err)=>{
-      console.log(err)
-    }
-  })
-
+  const {loginMutation,isPending,isSuccess,error} = useLogin()
+  
   const handleSigninForm = (e)=>{
     e.preventDefault();
     loginMutation(signinData)
   }
 
-  
 
   return (
-    <section className="h-screen flex justify-center items-center">
+    <section className="h-screen flex justify-center items-center px-4">
           <div className="w-full max-w-2xl flex flex-col mx-2 sm:flex-row border rounded-2xl overflow-hidden font-inter">
             <div className=" flex flex-col justify-center sm:w-1/2 w-full sm:py-8 py-3 px-3 sm:px-8">
               <div className="flex items-center gap-x-2 mb-6">
@@ -89,4 +77,4 @@ const Login = () => {
       );
 }
 
-export default Login
+export default LoginPage

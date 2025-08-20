@@ -33,6 +33,9 @@
   .nav-icons-outer{
     @apply btn btn-xs sm:btn-lg btn-square bg-base-100 text-primary;
   }
+  .sidebar-icons{
+    @apply btn w-full justify-start sm:btn-sm lg:btn-lg btn-sm
+  }
 
 }
 

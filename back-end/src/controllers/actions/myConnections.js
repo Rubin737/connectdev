@@ -7,7 +7,6 @@ export const myConnections = async (req, res) => {
   const user = await User.findById(loggedUserId)
     .select("friends")
     .populate("fullName location");
-  // console.log(`logginedUser: ${user}`);
 
   try {
     const connections = await Connection.find({
@@ -38,7 +37,6 @@ export const myConnections = async (req, res) => {
       return connection.sender;
     });
 
-    // console.log("connectionsList:",onlyConnections)
 
     res.status(200).json({
       success: true,
@@ -46,7 +44,6 @@ export const myConnections = async (req, res) => {
       data: onlyConnections,
     });
   } catch (err) {
-    console.log(err.message);
     res.status(500).json({
       success: false,
       message: `Internal error:${err.message}`,

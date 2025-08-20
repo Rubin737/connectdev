@@ -6,8 +6,8 @@ import { useAuthUser } from 'src/hooks/useAuthUser'
 import { getToken } from 'src/lib/dbChatToken'
 import { StreamChat } from 'stream-chat'
 import { Channel, ChannelHeader, Chat, MessageInput, MessageList, Thread, Window } from 'stream-chat-react'
-import VideoCallBtn from '../components/VideoCallBtn'
-import MessageNotify from 'src/components/MessageNotify'
+import VideoCallBtn from '../components/chat/VideoCallBtn'
+import MessageNotify from 'src/components/chat/MessageNotify'
 
 const ChatPage = () => {
 
@@ -28,8 +28,7 @@ const ChatPage = () => {
     
   })
 
-  console.log(authUser);
-  console.log(chat?.token)
+  
 
   useEffect(()=>{
       const initializeChat = async()=>{
@@ -44,7 +43,6 @@ const ChatPage = () => {
             image:authUser.data.image
         },chat.token)
        
-        console.log(connectUser)
 
         const channelId = [authUser.data._id,targetUserId].sort().join("-");
         
@@ -54,17 +52,15 @@ const ChatPage = () => {
           }
         )
 
-        console.log(channel)
 
-        const wat = await channel.watch();
-        console.log(wat)
+        await channel.watch();
         
 
         setChatChannel(channel);
         setChatClient(client);
         
-      }catch(err){
-          console.log(err.message)
+      }catch(){
+        //err
       }finally{
         setIsChatLoading(false)
       }

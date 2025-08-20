@@ -4,6 +4,7 @@ import { useSendRequest } from 'src/hooks/useSendRequest';
 import { getFlag } from 'src/utils/getFlag';
 import { capitalizeString } from 'src/utils/capitalizeString';
 import { useIgnoreProfile } from 'src/hooks/useIgnoreProfile';
+import userImg from "../../assets/images/user.png"
 
 const FeedPeople = ({ people }) => {
   const { requestMutation, error, isPending } = useSendRequest();
@@ -25,7 +26,7 @@ const FeedPeople = ({ people }) => {
   return (
     <div className="shadow-lg shadow-base-200 rounded-md overflow-clip sm:mt-5 sm:px-5 px-2 py-5 bg-base-300 flex flex-col space-y-4">
       <div className="flex space-x-2 items-center">
-        <img src={profilePic} alt="profile-pic" className="sm:size-18 size-13" />
+        <img src={profilePic || userImg} alt="profile-pic" className="sm:size-18 size-13" />
         <div>
           <span className="font-semibold sm:text-lg text-sm">{fullName}</span>
           <div className="flex space-x-1 items-center">
@@ -60,12 +61,12 @@ const FeedPeople = ({ people }) => {
           <div className="mt-auto grid sm:grid-cols-2 sm:gap-x-2 grid-rows-2 gap-y-2">
             <button
               onClick={() => handleSendRequest(_id)}
-              className="btn btn-primary btn-sm sm:btn-neutral"
+              className="btn btn-primary btn-sm sm:btn-sm"
             >
               <Send className="size-4 sm:size-5" />
               {isPending ? " Sending Request..." : " Send Request"}
             </button>
-            <button onClick={() => handleIgnoreProfile(_id)} className="btn btn-sm sm:btn-neutral btn-secondary">
+            <button onClick={() => handleIgnoreProfile(_id)} className="btn btn-sm sm:btn-sm btn-secondary">
               <BadgeX className="size-4 sm:size-5" /> Ignore Profile
             </button>
           </div>

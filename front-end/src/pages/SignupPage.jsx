@@ -1,39 +1,40 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import signupImg from '../assets/images/signup-img.png'; 
 import { Eye, EyeOff, ShipWheelIcon } from 'lucide-react'; 
-import { Link, useNavigate } from 'react-router-dom';
-import { QueryClient, useMutation, useQueryClient } from '@tanstack/react-query';
-import { createUser } from 'src/lib/dbAuth';
+import { Link } from 'react-router-dom';
 import ErrorMessage from 'src/components/ErrorMessage';
+import { useSignup } from 'src/hooks/useSignup';
+import toast from 'react-hot-toast';
+import ToastContent from 'src/components/ToastContent';
 
 
-const Signup = () => {
-  const queryClient = useQueryClient() 
+const SignupPage = () => {
+
   const [signupData,setSignupData] = useState({fullName:"",email:"",password:""});
   const [isChecked,setIsChecked] = useState(false);
   const [isPassVisible,setIsPassvisble] = useState(false)
 
-  const navigate = useNavigate()
-
-  const {mutate:createMutation,error,isPending} = useMutation({
-    mutationFn:createUser,
-    onSuccess:(data)=>{
-      queryClient.invalidateQueries({queryKey:["authUser"]})
-      navigate("/onboard")
-    }
-  })
+  const {createMutation,isPending,error} = useSignup()
 
   const handleFormSubmit = (e)=>{
     e.preventDefault();
     createMutation(signupData); 
     
-  }    
+  } 
+  
+  const showTermsAndCondtions = ()=>{
+    toast((t) => <ToastContent data={t}/>, {
+    duration: 10000, 
+  });
+  }
+
+  const errorInfo = error?.response?.data || {};
 
   return (
     <section className="min-h-screen flex justify-center items-center px-4 py-6">
   <div className="w-full max-w-4xl flex flex-col md:flex-row border rounded-2xl overflow-hidden font-inter shadow-lg">
     
-    {/* Left Form Section */}
+   
     <div className="w-full md:w-1/2 py-8 flex flex-col justify-center px-6 sm:px-10">
       <div className="flex items-center gap-x-2 mb-6 justify-center md:justify-start">
         <ShipWheelIcon color="green" size={35} />
@@ -46,7 +47,7 @@ const Signup = () => {
         className="flex flex-col gap-y-4"
         onSubmit={handleFormSubmit}
       >
-        {/* Name */}
+        
         <div className="signup-div">
           <label className="signup-span">Your name</label>
           <input
@@ -59,7 +60,7 @@ const Signup = () => {
             }
           />
           {error && (
-            <ErrorMessage error={error?.response?.data?.valErrors?.fullName} />
+            <ErrorMessage error={errorInfo?.valErrors?.data} />
           )}
         </div>
 
@@ -76,19 +77,19 @@ const Signup = () => {
             }
           />
           {error && (
-            <ErrorMessage error={error?.response?.data?.valErrors?.email} />
+            <ErrorMessage error={errorInfo?.valErrors?.email} />
           )}
           {error &&
-          error?.response?.data?.message !== "validation failed" ? (
+          errorInfo?.message !== "validation failed" ? (
             <p className="text-sm text-error">
-              {error.response.data.message}
+              {errorInfo?.message}
             </p>
           ) : (
             ""
           )}
         </div>
 
-        {/* Password */}
+        
         <div className="signup-div">
           <div className="relative">
             <label className="signup-span">Password</label>
@@ -118,7 +119,7 @@ const Signup = () => {
             )}
           </div>
           {error && (
-            <ErrorMessage error={error?.response?.data?.valErrors?.password} />
+            <ErrorMessage error={errorInfo?.valErrors?.password} />
           )}
         </div>
 
@@ -131,8 +132,8 @@ const Signup = () => {
           />
           <p className="font-mons text-[11px] sm:text-xs">
             I agree to the{" "}
-            <strong className="hover:underline">terms and service</strong> and{" "}
-            <strong className="hover:underline underline-offset-1">
+            <strong onClick={showTermsAndCondtions} className="hover:underline cursor-pointer">terms and service</strong> and{" "}
+            <strong className="hover:underline cursor-pointer underline-offset-1">
               privacy policy
             </strong>
           </p>
@@ -177,4 +178,4 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default SignupPage;

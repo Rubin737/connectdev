@@ -10,12 +10,12 @@ import {
   StreamVideoClient,
 } from '@stream-io/video-react-sdk';
 import PageLoader from 'src/components/PageLoader';
-import VideoError from 'src/components/VideoError';
-import CallContent from 'src/components/CallContent';
+import VideoError from 'src/components/chat/VideoError';
+import CallContent from 'src/components/chat/CallContent';
 
 
 
-const VideoCall = () => {
+const VideoCallingPage = () => {
 
  const [viClient, setViClient] = useState(null);
  const [isVideoLoading, setIsVideoLoading] = useState(true);
@@ -39,7 +39,6 @@ const VideoCall = () => {
 
 
     try {
-      console.log("initializing video call");
 
       const user = {
         id: authUser.data._id,
@@ -90,4 +89,4 @@ const VideoCall = () => {
   )
 }
 
-export default VideoCall
+export default VideoCallingPage

@@ -37,7 +37,6 @@ export const signup = async (req, res) => {
       image: newUser.profilePic,
     });
     
-    console.log(`user created for : ${newUser.fullName}`);
 
     const token = jwt.sign(
       { userId: newUser._id },

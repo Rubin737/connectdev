@@ -1,4 +1,5 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query"
+import toast from "react-hot-toast";
 import { ignoreProfile } from "src/lib/dbFriends"
 
 export const useIgnoreProfile = ()=>{
@@ -6,11 +7,11 @@ export const useIgnoreProfile = ()=>{
     const {mutate:ignoreMutation,error:ignoreError,isPending:ignoreIsPending} = useMutation({
         mutationFn:ignoreProfile,
         onSuccess:(data)=>{
-            console.log(data)
+            toast.success("Profile ignored!")
             queryClient.invalidateQueries({queryKey:["feed"]})
         },
         onError:(err)=>{
-            console.log(err)
+            toast.error("Something went wrong!")
         }
         
     })

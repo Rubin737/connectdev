@@ -1,15 +1,16 @@
 import { Clock, ClockIcon, MessageSquareText, Trash2 } from 'lucide-react'
 import React from 'react'
 import { Link } from 'react-router-dom'
+import userImg from '../../assets/images/user.png'
 
 const NewConnection = ({people}) => {
   const {fullName,profilePic,_id} = people.sender
-  console.log(people.sender._id)
+  
   return (
     <div className='w-full bg-base-300 flex justify-between py-3 sm:px-5 px-2 rounded-md'>
       <div className='flex sm:space-x-2 gap-x-1.5 max-w-2/3 sm: justify-between'>
         <div>
-          <img src={profilePic} alt="profile-pic" className='sm:w-10 w-9' />
+          <img src={profilePic || userImg} alt="profile-pic" className='sm:w-10 w-9' />
           <div></div>
         </div>
         <div className='inline-flex flex-col'>
