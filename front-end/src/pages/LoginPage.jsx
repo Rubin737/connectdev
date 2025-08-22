@@ -36,12 +36,12 @@ const LoginPage = () => {
               >
                 <div className="signup-div">
                   <label className="signup-span">Email address</label>
-                  <input type="email" placeholder='mail.site.com' className="input" value={signinData.email} onChange={(e)=>setSigninData({...signinData,email:e.target.value})} />
+                  <input type="email" placeholder='mail.site.com' className="input focus:outline-none focus:ring-0" value={signinData.email} onChange={(e)=>setSigninData({...signinData,email:e.target.value})} />
                 </div>
                 <div className="signup-div">
                   <div className='relative'>
                   <label className="signup-span mb-2">Password</label>
-                  <input type={isPassVisible?"text" : "password"} placeholder='********' className="input required pr-10" value={signinData.password}  onChange={(e)=>{setSigninData({...signinData,password:e.target.value})}} />
+                  <input type={isPassVisible?"text" : "password"} placeholder='********' className="input required pr-10 focus:outline-none focus:ring-0" value={signinData.password}  onChange={(e)=>{setSigninData({...signinData,password:e.target.value})}} />
                    { signinData.password && (
                     isPassVisible ?
                     <Eye className='absolute z-10  top-[55%] right-[10%] opacity-50 cursor-pointer ' size={18} onClick={()=>setIsPassvisble(false)} />

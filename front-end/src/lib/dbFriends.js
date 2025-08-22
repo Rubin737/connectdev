@@ -1,14 +1,15 @@
 import { axiosInstance } from "./axios";
 
-export const getFriendsList = async () => {
-  const { data } = await axiosInstance.get("/getuser/connections");
+export const getFriendsList = async (page) => {
+  const { data } = await axiosInstance.get(`/getuser/connections?page=${page}&limit=6`);
   return data;
 };
 
 
 // get users feed
-export const getFeed = async () => {
-  const { data } = await axiosInstance.get("/getuser/feed");
+export const getFeed = async ({pageParam}) => {
+
+  const { data } = await axiosInstance.get(`/getuser/feed?page=${pageParam}&limit=6`);
   return data;
 };
 // get requset
@@ -24,8 +25,8 @@ export const getMyOwnRequests = async () => {
   try {
     const { data } = await axiosInstance.get("/getuser/my-requests");
     return data;
-  } catch () {
-    //
+  } catch (error) {
+    //console.log(error)
   }
 };
 

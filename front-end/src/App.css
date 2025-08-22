@@ -36,6 +36,12 @@
   .sidebar-icons{
     @apply btn w-full justify-start sm:btn-sm lg:btn-lg btn-sm
   }
+  .chevron-icon{
+    @apply  btn-circle bg-base-100 text-accent btn-xs px-1   sm:btn-sm cursor-pointer ;
+  }
+  .chevron-icon-disabled{
+    @apply  btn-circle  bg-slate-600  btn-xs px-1 cursor-not-allowed sm:btn-sm 
+  }
 
 }
 

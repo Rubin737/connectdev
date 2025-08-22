@@ -26,5 +26,5 @@ app.use("/api/request", connectRouter);
 app.use("/api/getuser", userRouter);
 app.use("/api/chat", chatRouter)
 
-app.listen(5001);
+app.listen(5001,()=>console.log("connected"));
 connectDB();

@@ -1,16 +1,13 @@
-import React from 'react'
 import Logo from '../Logo'
-import { BellIcon, LogOut, Palette, SquareMenuIcon } from 'lucide-react'
+import { BellIcon, LogOut, SquareMenuIcon } from 'lucide-react'
 import { useAuthUser } from 'src/hooks/useAuthUser'
 import { Link, useLocation } from 'react-router-dom'
-import { useMutation, useQueryClient } from '@tanstack/react-query'
-import { logoutUser } from 'src/lib/dbAuth'
 import ThemeSelector from '../ThemeSelector'
 import { useDispatch } from 'react-redux'
 import { openSideBar } from 'src/store/menuSlice'
-import toast from 'react-hot-toast'
 import { useLogout } from 'src/hooks/useLogout'
 import { useIncommingRequest } from 'src/hooks/useIncommingRequest'
+import MessageNotify from '../chat/MessageNotify'
 
 
 
@@ -26,7 +23,7 @@ const Header = () => {
   const {IncommingReqs} = useIncommingRequest()
 
   const requestData = IncommingReqs?.data?.commingReqs || [];
-  const acceptedData = IncommingReqs?.data?.acceptedReqs || [];
+  
 
   const handleLogout = ()=>{
     logoutMutation(); 
@@ -64,6 +61,7 @@ const Header = () => {
           <div className='nav-icons-outer'><LogOut className='size-3 sm:size-5' onClick={handleLogout}/></div>
         </div>
       </nav>
+      <MessageNotify/>
     </header>
   )
 }
