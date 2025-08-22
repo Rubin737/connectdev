@@ -83,7 +83,7 @@ const ChatPage = () => {
    return (
     <div className="h-screen flex items-center justify-center bg-gradient-to-b from-[#c9e8c9] to-[#b7e7bb] overflow-hidden">
       
-      <div className="lg:w-[80%] w-[90%] lg:-mt-24 max-w-[1000px] lg:h-[65%] h-[90%] rounded-2xl shadow-2xl bg-white flex flex-col overflow-hidden">
+      <div className="lg:w-[80%] w-[90%] lg:-mt-24 max-w-[1000px] lg:h-[65%] h-[85%] rounded-2xl shadow-2xl bg-white flex flex-col overflow-hidden">
         <Chat client={chatClient} >
           <Channel channel={chatChannel}>
             <div className='relative w-full'>
