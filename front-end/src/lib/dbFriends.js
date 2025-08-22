@@ -31,8 +31,6 @@ export const getMyOwnRequests = async () => {
 };
 
 
-
-
 //accpt request
 
 export const patchAcceptReq = async ({ statusType, id }) => {

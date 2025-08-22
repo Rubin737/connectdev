@@ -59,7 +59,7 @@ const ChatPage = () => {
             
         
       }catch(err){
-        console.log(err)
+       //
       }finally{
         setIsChatLoading(false)
       }

@@ -5,10 +5,8 @@ export const useFriendsList = (page)=>{
      const {data:friendsList,isLoading,error} = useQuery({
         queryKey:["friends",page],
         queryFn:()=>getFriendsList(page),
-        refetchOnWindowFocus:false,
-        retry:false,
+
         placeholderData:(prev)=>{
-          console.log(prev)
           return prev
         }
       

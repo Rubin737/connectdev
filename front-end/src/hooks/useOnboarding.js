@@ -14,7 +14,7 @@ export const useOnboarding = ()=>{
       onError:()=>{
         toast.error("Something went wrong!")
       },
-      retry:false,
+     
     
      })
 

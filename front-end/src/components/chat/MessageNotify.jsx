@@ -13,7 +13,6 @@ const MessageNotify = () => {
     if(!client) return
     
     const getNotification = (event)=>{
-      console.log(event)
       if(event.user?.id === client.userID) return ;
       if(inChat) return 
        

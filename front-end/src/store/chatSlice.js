@@ -9,7 +9,6 @@ const chatSlice = createSlice({
     reducers:{
         addClient : (state,action)=>{
             state.client = action.payload;
-            console.log(state.client)
         },
         addChannel : (state,action)=>{
             state.channel = action.payload;

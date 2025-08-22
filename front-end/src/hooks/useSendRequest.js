@@ -14,7 +14,7 @@ export const useSendRequest = ()=>{
         onError:()=>{
             toast.error("😶 Cannot send request")
         },
-        retry:false,
+        
 
     })
 

@@ -13,7 +13,6 @@ import { useFriendsList } from 'src/hooks/useFriendsList'
 const HomePage = () => {
 
   const [page,setPage] = useState(1);
-  console.log(page)
 
 const {friendsList,isLoading:isFriendsListLoading,error:friedsError} = useFriendsList(page);
 const {myFeed,isLoading:isFeedLoading,error:feedError,hasNextPage,ref,inView,fetchNextPage,isFetchingNextPage} = useFeed();
@@ -57,12 +56,12 @@ if(friedsError) return <p>Error Happened</p>
                 friendsListData.map((connection,index)=><ConnectionCards key={index} connection={connection}/>)
               }
             </div>
-            <div className='justify-between px-5 flex my-5'>
+            { friendsListData?.length>6 && (<div className='justify-between px-5 flex my-5'>
               
               <button disabled={page<=1} className={`${page<=1 ?"chevron-icon-disabled" : "chevron-icon" }`}><ArrowLeftFromLineIcon className=' sm:size-5 size-4'   onClick={()=>setPage(prev=>prev-1)}/></button>
               
               <button disabled={!hasMorePage} className={`${!hasMorePage ?"chevron-icon-disabled" : "chevron-icon" }`}><ArrowRightFromLine className=' size-4 sm:size-5' onClick={()=>setPage(prev=>prev+1)}/></button>
-            </div>
+            </div>)}
           </>
           )
         }
