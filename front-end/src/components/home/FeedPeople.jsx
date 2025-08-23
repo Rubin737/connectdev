@@ -14,13 +14,12 @@ const FeedPeople = ({ people }) => {
   const { fullName, bio, nativeLanguage, learningLanguage, location, profilePic, _id } = people;
 
   const handleSendRequest = (id) => {
-    const statusType = "interest";
-    requestMutation({ statusType, id });
+    requestMutation(id);
   };
 
   const handleIgnoreProfile = (id) => {
-    const statusType = "ignore";
-    ignoreMutation({ statusType, id });
+  
+    ignoreMutation(id);
   };
 
   return (

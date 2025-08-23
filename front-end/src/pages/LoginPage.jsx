@@ -24,11 +24,11 @@ const LoginPage = () => {
 
   return (
     <section className="h-screen flex justify-center items-center px-4">
-          <div className="w-full max-w-2xl flex flex-col mx-2 sm:flex-row border rounded-2xl overflow-hidden font-inter">
+          <div className="w-full max-w-2xl flex flex-col mx-2 sm:flex-row border-1 py-5 sm:py-0 border-secondary rounded-2xl overflow-hidden font-inter">
             <div className=" flex flex-col justify-center sm:w-1/2 w-full sm:py-8 py-3 px-3 sm:px-8">
               <div className="flex items-center gap-x-2 mb-6">
-                <ShipWheelIcon color='green' size={35} />
-                <h2 className="text-2xl tracking-wider bg-linear-to-r from-green-500 to-green-800 bg-clip-text text-transparent   font-mono  font-bold">Steamify</h2>
+                <ShipWheelIcon className='text-primary' size={35} />
+                <h2 className="text-2xl tracking-wider bg-linear-to-r from-primary to-secondary bg-clip-text text-transparent   font-mono  font-bold">Streamify</h2>
               </div>
                
               <form className="flex flex-col gap-y-4"

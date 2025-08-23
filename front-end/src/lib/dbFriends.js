@@ -22,42 +22,40 @@ export const getReqs = async () => {
 //my-own requests
 
 export const getMyOwnRequests = async () => {
-  try {
+  
     const { data } = await axiosInstance.get("/getuser/my-requests");
     return data;
-  } catch (error) {
-    //console.log(error)
-  }
+  
 };
 
 
 //accpt request
 
-export const patchAcceptReq = async ({ statusType, id }) => {
+export const patchAcceptReq = async (id) => {
   const { data } = await axiosInstance.patch(
-    `/request/review/${statusType}/${id}`
+    `/request/review/accept/${id}`
   );
   return data;
 };
 
 //reject
-export const patchrejectReq = async ({ statusType, id }) => {
+export const patchrejectReq = async (id) => {
   const { data } = await axiosInstance.patch(
-    `/request/review/${statusType}/${id}`
+    `/request/review/reject/${id}`
   );
   return data;
 };
 
 //ignore request
 
-export const ignoreProfile = async ({statusType,id}) => {
-  const {data} = await axiosInstance.post(`/request/send/${statusType}/${id}`);
+export const ignoreProfile = async (id) => {
+  const {data} = await axiosInstance.post(`/request/send/ignore/${id}`);
   return data;
 };
 
 //interest request
-export const sendFriendRequest = async ({statusType,id}) => {
-    const {data} = await axiosInstance.post(`/request/send/${statusType}/${id}`);
+export const sendFriendRequest = async (id) => {
+    const {data} = await axiosInstance.post(`/request/send/interest/${id}`);
     return data;
   };
 

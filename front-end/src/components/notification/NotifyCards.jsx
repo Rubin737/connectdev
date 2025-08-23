@@ -14,12 +14,10 @@ const NotifyCards = ({requests}) => {
 
 
   const handleAcceptRequest = (id)=>{
-    const statusType = "accept"
-    acceptMutation({statusType,id})
+    acceptMutation(id)
   }
   const handleRejectRequest = (id)=>{
-    const statusType = "reject"
-    rejectMutation({statusType,id})
+    rejectMutation(id)
   }
 
 

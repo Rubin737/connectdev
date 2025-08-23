@@ -36,10 +36,10 @@ const SignupPage = () => {
     
    
     <div className="w-full md:w-1/2 py-8 flex flex-col justify-center px-6 sm:px-10">
-      <div className="flex items-center gap-x-2 mb-6 justify-center md:justify-start">
-        <ShipWheelIcon color="green" size={35} />
-        <h2 className="text-2xl sm:text-3xl tracking-wider bg-gradient-to-r from-green-500 to-green-800 bg-clip-text text-transparent font-mono font-bold">
-          Steamify
+      <div className="flex items-center  gap-x-2 mb-6 justify-center md:justify-start">
+        <ShipWheelIcon className='text-primary' size={35} />
+        <h2 className="text-2xl sm:text-3xl tracking-wider bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent font-mono font-bold">
+          Streamify
         </h2>
       </div>
 
