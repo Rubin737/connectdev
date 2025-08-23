@@ -1,6 +1,6 @@
 import { BellIcon, UserPlus } from 'lucide-react'
 import NoFriends from 'src/components/home/NoFriends';
-import PageLoader from 'src/components/PageLoader';
+import PageLoader from 'src/components/utilComponents/PageLoader';
 import { useIncommingRequest } from 'src/hooks/useIncommingRequest'
 import NotifyCards from '../components/notification/NotifyCards';
 import NewConnection from 'src/components/notification/NewConnection';

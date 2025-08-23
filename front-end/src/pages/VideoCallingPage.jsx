@@ -9,7 +9,7 @@ import {
   StreamVideo,
   StreamVideoClient,
 } from '@stream-io/video-react-sdk';
-import PageLoader from 'src/components/PageLoader';
+import PageLoader from 'src/components/utilComponents/PageLoader';
 import VideoError from 'src/components/chat/VideoError';
 import CallContent from 'src/components/chat/CallContent';
 

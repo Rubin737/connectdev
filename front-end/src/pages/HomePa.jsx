@@ -5,7 +5,7 @@ import ConnectionCards from 'src/components/home/ConnectionCards';
 import FeedPeople from 'src/components/home/FeedPeople';
 import NoFeed from 'src/components/home/NoFeed';
 import NoFriends from 'src/components/home/NoFriends'
-import PageLoader from 'src/components/PageLoader';
+import PageLoader from 'src/components/utilComponents/PageLoader';
 import { useFeed } from 'src/hooks/useFeed';
 import { useFriendsList } from 'src/hooks/useFriendsList'
 

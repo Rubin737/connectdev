@@ -2,10 +2,10 @@ import { useState } from 'react';
 import signupImg from '../assets/images/signup-img.png'; 
 import { Eye, EyeOff, ShipWheelIcon } from 'lucide-react'; 
 import { Link } from 'react-router-dom';
-import ErrorMessage from 'src/components/ErrorMessage';
+import ErrorMessage from 'src/components/utilComponents/ErrorMessage';
 import { useSignup } from 'src/hooks/useSignup';
 import toast from 'react-hot-toast';
-import ToastContent from 'src/components/ToastContent';
+import ToastContent from 'src/components/utilComponents/ToastContent';
 
 
 const SignupPage = () => {
@@ -32,7 +32,7 @@ const SignupPage = () => {
 
   return (
     <section className="min-h-screen flex justify-center items-center px-4 py-6">
-  <div className="w-full max-w-4xl flex flex-col md:flex-row border rounded-2xl overflow-hidden font-inter shadow-lg">
+  <div className="w-full max-w-4xl flex flex-col md:flex-row border-primary border rounded-2xl overflow-hidden font-inter shadow-lg">
     
    
     <div className="w-full md:w-1/2 py-8 flex flex-col justify-center px-6 sm:px-10">

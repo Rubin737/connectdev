@@ -1,7 +1,7 @@
 import { Globe, MapPinPen,  ShipWheelIcon } from 'lucide-react'
 import { useState } from 'react'
 import toast from 'react-hot-toast'
-import ErrorMessage from 'src/components/ErrorMessage'
+import ErrorMessage from 'src/components/utilComponents/ErrorMessage'
 import { LANGUAGES } from 'src/constants/constants'
 import { useAuthUser } from 'src/hooks/useAuthUser'
 import { useOnboarding } from 'src/hooks/useOnboarding'

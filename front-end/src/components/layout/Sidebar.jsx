@@ -1,6 +1,6 @@
 import { Bell, HomeIcon, PanelLeftClose, SquareX, Users } from 'lucide-react'
 import { Link, useLocation } from 'react-router-dom'
-import Logo from '../Logo'
+import Logo from '../utilComponents/Logo'
 import { useAuthUser } from 'src/hooks/useAuthUser'
 import { useDispatch } from 'react-redux'
 import { openSideBar } from 'src/store/menuSlice'

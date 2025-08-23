@@ -1,12 +1,12 @@
 import { Routes,Route } from 'react-router-dom'
 import Login from './pages/LoginPage'
 import { Navigate } from 'react-router-dom'
-import PageLoader from './components/PageLoader'
+import PageLoader from './components/utilComponents/PageLoader'
 import { useAuthUser } from './hooks/useAuthUser'
 import { useSelector } from 'react-redux'
 import ChatPage from './pages/ChatPage'
 import 'stream-chat-react/dist/css/v2/index.css';
-import { Toaster } from 'react-hot-toast'
+import toast, { Toaster } from 'react-hot-toast'
 import Layout from './components/layout/Layout'
 import HomePage from './pages/HomePa'
 import SignupPage from './pages/SignupPage'
@@ -15,10 +15,23 @@ import NotificationsPage from './pages/NotificationsPage'
 import VideoCallingPage from './pages/VideoCallingPage'
 import MyRequestsPage from './pages/MyRequestsPage'
 import ErrorPage from './pages/ErrorPage'
+import { useNetworkStatus } from './hooks/useNetworkStatus'
+import { useEffect } from 'react'
 
 const App = () => {
 const theme = useSelector(store=>store.theme);
 const {authUser,isLoading,isError,error} =  useAuthUser();
+
+const isOnline = useNetworkStatus();
+
+useEffect(() => {
+    if (isOnline) {
+      toast.success("Back online ✅");
+    } else {
+      toast.error("You are offline ❌");
+    }
+  }, [isOnline]);
+
 
 if(isLoading) return <PageLoader/>
 

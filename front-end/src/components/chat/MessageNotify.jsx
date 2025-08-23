@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import toast from 'react-hot-toast';
 import { useSelector } from 'react-redux';
-import ToastChatNotify from '../ToastChatNotify';
+import ToastChatNotify from '../utilComponents/ToastChatNotify';
 import { useLocation } from 'react-router-dom';
 
 const MessageNotify = () => {

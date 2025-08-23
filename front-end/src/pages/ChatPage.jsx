@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query'
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import PageLoader from 'src/components/PageLoader'
+import PageLoader from 'src/components/utilComponents/PageLoader'
 import { useAuthUser } from 'src/hooks/useAuthUser'
 import { getToken } from 'src/lib/dbChatToken'
 import { StreamChat } from 'stream-chat'

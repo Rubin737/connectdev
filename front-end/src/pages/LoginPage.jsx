@@ -2,7 +2,7 @@ import { Eye, EyeOff, LockKeyhole, LockKeyholeOpen, ShipWheelIcon } from 'lucide
 import { useState } from 'react'
 import signinImg from '../assets/images/signin-img.png';
 import { Link } from 'react-router-dom';
-import ErrorMessage from 'src/components/ErrorMessage';
+import ErrorMessage from 'src/components/utilComponents/ErrorMessage';
 import { useLogin } from 'src/hooks/useLogin';
 
 const LoginPage = () => {
