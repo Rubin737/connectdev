@@ -35,7 +35,7 @@ const OnboardingPage = () => {
 
   const changeAvatar = ()=>{
     const profileNumber = Math.floor(Math.random() * 100) + 1;
-    const profilePic = `https://avatar.iran.liara.run/public/${profileNumber}`;
+    const profilePic = `https://api.dicebear.com/7.x/avataaars/svg?seed=${profileNumber}`;
     setFormData({...formData,profilePic});
     setTimeout(()=>toast.success(" 🖼 New pic is generated successfully!"),1000)
   }
