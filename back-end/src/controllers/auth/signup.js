@@ -21,7 +21,7 @@ export const signup = async (req, res) => {
     }
 
     const randomNumber = Math.floor(Math.random() * 100) + 1;
-    const profilePic = `https://avatar.iran.liara.run/public/${randomNumber}`;
+   const profilePic = `https://api.dicebear.com/7.x/avataaars/svg?seed=${randomNumber}`
 
     const newUser = new User({
       fullName,
